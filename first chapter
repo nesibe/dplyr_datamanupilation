@@ -1,1 +1,19 @@
+#convert hflights data from data.table format to tblr by tbl_df function
+hflights <- tbl_df(hfllights)
+Create object carriers
+carriers <- hfligts$UniqueCarrier
+#Using lookup table to convert or clean the data
+two <- c("AA", "AS")
+lut <- c("AA" = "American", 
+         "AS" = "Alaska", 
+         "B6" = "JetBlue")
+two <- lut[two]
+two
+# lut is lookup table where your changes are placed
+lut <- c("A" = "carrier", "B" = "weather", "C" = "FFA", "D" = "security", "E" = "not cancelled")
+# Add the Code column
+hflights$Code <- lut[hflights$CancellationCode]
+
+
+
 
