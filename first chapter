@@ -17,3 +17,4 @@ hflights$Code <- lut[hflights$CancellationCode]
 
 
 
+
