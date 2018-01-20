@@ -1,0 +1,6 @@
+#The five verbs and select in more details
+#select function
+#Print out a tbl with the four columns of hflights related to delay
+select(hflights, ActualElapsedTime, AirTime, ArrDelay, DepDelay)
+#Find the columns Year up to and including DayOfWeek, columns ArrDelay up to and including Diverted.
+select(hflights, Year:DayOfWeek, ArrDelay:Diverted)
