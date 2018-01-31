@@ -4,3 +4,26 @@
 select(hflights, ActualElapsedTime, AirTime, ArrDelay, DepDelay)
 #Find the columns Year up to and including DayOfWeek, columns ArrDelay up to and including Diverted.
 select(hflights, Year:DayOfWeek, ArrDelay:Diverted)
+#Print out a tbl containing just ArrDelay and DepDelay
+select(hflihgts, ends_with("Delay"))
+
+# Use combination of heşper functions and variable namesto print out the UniqueCarrier, FlightNum, TailNum, Cancelled, and
+#CancelllationCode columns of hflights.
+
+select(hflights, UniqueCarriesr, ends_with("Num"), starts_with("Cancell"))
+#Find the most concise way to returtn the following columns with select and its helper functions:
+#DepTime, arrTime, ActualElapsedTime, AirTime, ArrDelay, DepDelay. Use only helper functions
+select(hflights, contains("Tim"), contains("Del"))
+
+#Finish select call so that ex1d matches ex1r
+ex1r<- hflights[c("TaxiIn", "TaxiOut", "Distance")]
+ex1d<- select(hflights, contains("Taxi"), Distance)
+
+#Fİnish select call so that ex2d matches ex2r
+ex2r <- hflights[c("Year", "Month", "DayOfWeek", "DepTime", "ArrTime")]
+ex2d <- select(hflights, Year:ArrTime, DayofMonth)
+
+#Finish select call so that ex3d matches ex3r
+ex3r <- hflights[c("TailNum", "TaxiIn", "TaxiOut")]
+ex3d <- select(hflights, starts_with("T"))
+
