@@ -1,0 +1,8 @@
+#mutate
+#filter fuction, to find more logical functions type "?Comparison".
+x %in% c(a, b, c), True if x is in the vector c(a, b, c)
+ All flights flown by one of JetBlue, Southwest, or Delta
+filter(hflights,UniqueCarrier %in% c("JetBlue" ,"Southwest", "Delta") )
+
+# All flights where taxiing took longer than flying
+filter(hflights, TaxiIn + TaxiOut > AirTime)
