@@ -6,3 +6,23 @@ filter(hflights,UniqueCarrier %in% c("JetBlue" ,"Southwest", "Delta") )
 
 # All flights where taxiing took longer than flying
 filter(hflights, TaxiIn + TaxiOut > AirTime)
+
+#is.na() will keep the observations in df for which the variable x is not NA: 
+filter(df, !is.na(x))
+# you can combine multiple logical tests into  a single test. these include &,| and !.
+#Select the flighs that had JFK as their destination :c1
+c1 <- filter(hflihgts, Dest %in% "JFK")
+#Combine the Year, Month, and DayofMonth varibales to create a Date column : c2
+c2 <- mutate(c1, Date=paste(Year, Month, DayofMonth, sep="-"))
+#Print out a selection of columns of c2
+select(c2,Date, DepTime, ArrTime,TailNum)
+#How mnay weekend flihts flew a distance of more than 1000 miles but hada total taxiing time below 15 minutes
+filter(hflights, DayOfWeek, %in% c(6,7), Distance > 1000, TaxiIn + TaxiOut < 15)
+#Definition of dtc 
+dtc <- filter(hflights, Cancelled==1, !is.na=(DepDelay))
+#Arrange dtc by departure delays
+arrange(dtc, DepDelay)
+#Arrange dtc so that cancellation reasons are grouped
+arrange(dtc, CancellationCode)
+#Arrange dtc according to carrier and departure delays
+arrange(dtc, UniqueCarrier, DepDelay)
