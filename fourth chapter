@@ -1,0 +1,5 @@
+#summarise function
+summarise (df, sum=sum(A), avg=avg(B), var=var(B))
+a1 <- filter(a1, !is.na(DepDelay)) #cleaning data
+summarise(a1, min=min(DepDelay), max=max(DepDelay), avg=mean(MeanDelay),
+med=median(DepDelay))
