@@ -3,3 +3,7 @@ summarise (df, sum=sum(A), avg=avg(B), var=var(B))
 a1 <- filter(a1, !is.na(DepDelay)) #cleaning data
 summarise(a1, min=min(DepDelay), max=max(DepDelay), avg=mean(MeanDelay),
 med=median(DepDelay))
+#You can use any function you like in summarise() so long as the function can take a vector of data and return a single number.
+#min(x), max(x), mean(x), median(x),  quantile(x), sd(x), var(x), IQR(x), diff(range(x))- total range of vector x
+#first(x), last(x), nth(x, n), n()- The number of rows in the data.frame or group of observations that summarise() describes
+# n_distinct(x)- The number of unique values in vector x
