@@ -7,3 +7,21 @@ med=median(DepDelay))
 #min(x), max(x), mean(x), median(x),  quantile(x), sd(x), var(x), IQR(x), diff(range(x))- total range of vector x
 #first(x), last(x), nth(x, n), n()- The number of rows in the data.frame or group of observations that summarise() describes
 # n_distinct(x)- The number of unique values in vector x
+#sum() and mean() aggregation function can be applied to the logical test vectors sum() represents the total number of observations
+#that passed the test; mean() represents the proportion
+
+#Generate summarizing statistics for hflights
+summarise(hflights, n_obs=n(), n_carrier=n_distinct(UniqueCarrier), n_dest=n_distinct(Dest))
+#All American Airline flights
+aa<- filter(hflights, UniqueCarrier=="American")
+#Generate summarizing statistics for aa
+aa %>% summarise(n_flights=n(), n_canc=sum(Cancelled), avg_delay=mean(ArrDelay, na.rm=TRUE))
+hflights%>% mutate(RealTime=ActualElapsedtime+ 100, mph=Distance/RealTime*60) %>% filter(!is.na(mph), mph<70) %>% summarise(n_less=n(), 
+n_dest=n_distinct(Dest), min_dist=min(Distance), max_dist=max(Distance))
+
+# Finish the command with a filter() and summarise() call
+
+hflights %>% mutate(RealTime = ActualElapsedTime + 100, mph = Distance / RealTime * 60) %>% 
+filter(mph<105 | Cancelled==1 | Diverted==1 ) %>% summarise(n_non=n(), n_dest=n_distinct(Dest), 
+min_dist=min(Distance), max_dist=max(Distance))
+  
