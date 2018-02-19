@@ -1,0 +1,4 @@
+#Make an orer per_carrier summary of hflights
+hflights %>% group_by(UniqueCarrier) %>% summarise(p_cancmean(Cancelled==1)*100, avg_delay=mean(ArrDelay, na.rm=TRUE))
+%>% arrange(avg_delay, p_canc)
+#Order overview of average arrival delays per carrier
